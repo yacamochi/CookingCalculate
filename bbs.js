@@ -38,7 +38,6 @@ PUAD.mouseclick=function(e){
 
 var BbsData=new Array();
 BbsSet();
-BbsAd();
 BbsGet(0);
 
 
