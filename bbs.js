@@ -38,8 +38,39 @@ PUAD.mouseclick=function(e){
 
 var BbsData=new Array();
 BbsSet();
+BbsAd();
 BbsGet(0);
 
+function BbsAd(){
+	var area,block,obj;
+	area=document.getElementById('BbsBlock');
+	block=document.createElement('div');
+	block.style.marginTop='8px';
+	obj=document.createElement('a');
+	obj.style.textDecoration='none';
+	var ad=[];
+	ad.push(['ブログ編集 for Android','']);
+	ad.push(['','']);
+	ad.push(['','']);
+	ad.push(['',['',,]]);
+	var r=Math.floor(Math.random()*ad.length);
+	obj.appendChild(document.createTextNode(ad[r][0]));
+	if(typeof ad[r][1]=='string'){
+		obj.href=ad[r][1];
+		obj.target='_blank';
+	}else{
+		obj.href='javascript:void(0)';
+		obj.style.display='inline-block';
+		obj.setAttribute('data-src',ad[r][1][0]);
+		obj.setAttribute('data-width',ad[r][1][1]);
+		obj.setAttribute('data-height',ad[r][1][2]);
+		obj.addEventListener('click',PUAD.mouseclick,false);
+		obj.addEventListener('mouseenter',PUAD.mouseenter,false);
+		obj.addEventListener('mouseleave',PUAD.mouseleave,false);
+	}
+	block.appendChild(obj);
+	area.appendChild(block);
+}
 
 function BbsReadCookie(){
 	if(document.cookie=="") return;
